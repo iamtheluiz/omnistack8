@@ -6,7 +6,7 @@ const port   = 3333;      // Define a porta do servidor
 
 // Define a rota principal
 server.get('/', (req, res) => {
-  res.send('<h1>Index Page</h1>');
+  return res.send(`Hello ${req.query.name}`);
 });
 
 // Inicia o servidor na porta desejada
