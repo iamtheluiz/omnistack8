@@ -2,6 +2,23 @@ const axios = require('axios');
 const Dev = require('../models/Dev');
 
 module.exports = {
+  async index(req, res) {
+    const { user } = req.headers;
+
+    // Captura as informações do desenvolvedor conectado
+    const loggedDev = await Dev.findById(user);
+
+    // Filtra os usuários que serão registrados
+    const users = await Dev.find({
+      $and: [
+        { _id: { $ne: user } },
+        { _id: { $nin: loggedDev.likes } },
+        { _id: { $nin: loggedDev.dislikes } },
+      ]
+    });
+
+    return res.json(users);
+  },
   async store(req, res) {
     // Pega o username do desenvolvedor
     const { username: user } = req.body;
@@ -9,7 +26,7 @@ module.exports = {
     // Verifica se o usuário já está cadastrado
     const userExists = await Dev.findOne({ user });
 
-    if (userExists){
+    if (userExists) {
       return res.json(userExists);
     }
 
