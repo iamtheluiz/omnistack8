@@ -8,5 +8,12 @@ routes.get('/', (req, res) => {
   return res.send(`Hello ${req.query.name}`);
 });
 
+// Define a rota para cadastro de desenvolvedores
+routes.post('/devs', (req, res) => {
+  console.log(req.body);
+
+  return res.json({ ok: true });
+})
+
 // Exporta as rotas
 module.exports = routes;

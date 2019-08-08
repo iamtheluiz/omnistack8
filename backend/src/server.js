@@ -5,7 +5,10 @@ const routes = require('./routes');
 
 // Cria servidor express
 const server = express();
-const port   = 3333;      // Define a porta do servidor
+const port = 3333;  // Define a porta do servidor
+
+// Define que o servidor deve esperar dados no formato JSON
+server.use(express.json());
 
 // Faz o express implementar as rotas
 server.use(routes);
