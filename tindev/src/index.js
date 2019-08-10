@@ -1,8 +1,8 @@
 import React from "react";
 
-// Pages
-import Login from "./pages/Login";
+// Routes
+import Routes from "./routes";
 
 export default function App() {
-  return <Login />;
+  return <Routes />;
 }
