@@ -29,7 +29,7 @@ export default function Main({ match }) {
   }, [match.params.id]);
 
   useEffect(() => {
-    const socket = io('http://localhost:3333', {
+    const socket = io('http://192.168.0.104:3333', {
       query: {
         user: match.params.id
       }
@@ -88,7 +88,7 @@ export default function Main({ match }) {
       { matchDev && (
         <div class="match-container">
           <img src={itsamatch} alt="It's a Match!" />
-          <img className="avatar" src={matchDev.avatar} alt="User Image" />
+          <img className="avatar" src={matchDev.avatar} alt="User" />
           <strong>{matchDev.name}</strong>
           <p>{matchDev.bio}</p>
 
